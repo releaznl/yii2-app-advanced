@@ -1,4 +1,15 @@
-Yii 2 Advanced Project Template
+Custom Yii 2 Advanced Project Template ![Build Status](https://travis-ci.org/johankladder/yii2-app-advanced.svg?branch=maste "Logo Title Text 1")
+======================================
+
+This template contains the sources of the Yii2 Advance Project Template with a custom touch. Added functionality:
+- Deployment; Custom Deployer tasks to ease deployment of the application.
+- Config handling; No more local specific files in the repository, even deployment secrets aren't pushed
+
+
+--------------------------------------
+
+
+## Yii 2 Advanced Project Template
 ===============================
 
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
