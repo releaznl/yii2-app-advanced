@@ -1,4 +1,4 @@
-Custom Yii 2 Advanced Project Template ![Build Status](https://travis-ci.org/johankladder/yii2-app-advanced.svg?branch=maste "Logo Title Text 1")
+Custom Yii 2 Advanced Project Template [![Build Status](https://travis-ci.org/johankladder/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/johankladder/yii2-app-advanced)
 ======================================
 
 This template contains the sources of the Yii2 Advance Project Template with a custom touch. Added functionality:
