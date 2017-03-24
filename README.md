@@ -10,7 +10,6 @@ This template contains the sources of the Yii2 Advance Project Template with a c
 
 
 ## Yii 2 Advanced Project Template
-===============================
 
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
