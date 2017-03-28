@@ -64,5 +64,8 @@ return [
             'backend/config/main-local.php',
             'frontend/config/main-local.php',
         ],
+        'createSymlink' => [
+          'frontend/web/backend' => 'backend/web'
+        ]
     ],
 ];
