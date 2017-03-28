@@ -1,4 +1,8 @@
-Custom Yii 2 Advanced Project Template [![Build Status](https://travis-ci.org/johankladder/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/johankladder/yii2-app-advanced)
+
+[![Build Status](https://travis-ci.org/johankladder/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/johankladder/yii2-app-advanced)
+[![Code Climate](https://codeclimate.com/github/johankladder/yii2-app-advanced/badges/gpa.svg)](https://codeclimate.com/github/johankladder/yii2-app-advanced)
+
+Custom Yii 2 Advanced Project Template 
 ======================================
 
 This template contains the sources of the Yii2 Advance Project Template with a custom touch. Added functionality:
