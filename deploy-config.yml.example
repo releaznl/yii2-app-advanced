@@ -5,11 +5,14 @@ server:
     host: 'applicationname.com'
     stage: 'production'
     branch: 'master'
+    deploy_path: '/var/www/applicationname.com'
   development:
     host: 'dev.applicationname.com'
     stage: 'development'
     branch: 'develop'
+    deploy_path: '/var/www/dev.applicationname.com'
   custom:
     host: 'localhost'
     stage: 'test'
     branch: 'test'
+    deploy_path: '/var/www/test.local'
