@@ -6,13 +6,16 @@ server:
     stage: 'production'
     branch: 'master'
     deploy_path: '/var/www/applicationname.com'
+    ssh_user: 'username'
   development:
     host: 'dev.applicationname.com'
     stage: 'development'
     branch: 'develop'
     deploy_path: '/var/www/dev.applicationname.com'
+    ssh_user: 'username'
   custom:
     host: 'localhost'
     stage: 'test'
     branch: 'test'
     deploy_path: '/var/www/test.local'
+    ssh_user: 'username'
