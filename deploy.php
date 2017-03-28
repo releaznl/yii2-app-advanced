@@ -19,6 +19,7 @@ set('writable_dirs', []);
 // Hosts
 foreach($yaml['server'] as $host) {
   host($host['host'])
+      ->user($host['ssh_user'])
       ->stage($host['stage'])
       ->set('branch', $host['branch'])
       ->set('deploy_path', $host['deploy_path']);
