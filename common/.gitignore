@@ -1,0 +1,8 @@
+# Yii2:
+config/main-local.php
+config/params-local.php
+config/test-local.php
+
+# Custom secrets:
+config/.gitignore
+config/config.yml.example
