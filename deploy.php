@@ -26,14 +26,5 @@ foreach($yaml['server'] as $host) {
       ->set('deploy_path', $host['deploy_path']);
 }
 
-// Tasks
-desc('Restart PHP-FPM service');
-task('php-fpm:restart', function () {
-    // The user must have rights for restart service
-    // /etc/sudoers: username ALL=NOPASSWD:/bin/systemctl restart php-fpm.service
-    run('sudo systemctl restart php-fpm.service');
-});
-after('deploy:symlink', 'php-fpm:restart');
-
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
