@@ -27,7 +27,6 @@ foreach($yaml['server'] as $host) {
 }
 
 // Tasks
-
 desc('Restart PHP-FPM service');
 task('php-fpm:restart', function () {
     // The user must have rights for restart service

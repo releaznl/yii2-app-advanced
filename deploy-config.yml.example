@@ -1,5 +1,5 @@
 general:
-  shh_repo_url: 'git@github.com:johankladder/yii2-app-advanced.git'
+  ssh_repo_url: 'git@github.com:johankladder/yii2-app-advanced.git'
 server:
   production:
     host: 'applicationname.com'
