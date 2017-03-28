@@ -4,9 +4,12 @@ server:
   production:
     host: 'applicationname.com'
     stage: 'production'
+    branch: 'master'
   development:
     host: 'dev.applicationname.com'
     stage: 'development'
+    branch: 'develop'
   custom:
     host: 'localhost'
     stage: 'test'
+    branch: 'test'

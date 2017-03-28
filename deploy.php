@@ -20,6 +20,7 @@ set('writable_dirs', []);
 foreach($yaml['server'] as $host) {
   host($host['host'])
       ->stage($host['stage'])
+      ->set('branch', $host['branch'])
       ->set('deploy_path', '/var/www/project.com');
 }
 
