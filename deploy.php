@@ -4,7 +4,6 @@ namespace Deployer;
 require 'recipe/yii.php';
 
 use Symfony\Component\Yaml\Yaml;
-
 // Configuration
 
 $yaml = Yaml::parse(file_get_contents(__DIR__ . "/deploy-config.yml"));
@@ -23,8 +22,12 @@ foreach($yaml['server'] as $host) {
       ->forwardAgent()
       ->stage($host['stage'])
       ->set('branch', $host['branch'])
-      ->set('deploy_path', $host['deploy_path']);
+      ->set('deploy_path', $host['deploy_path'])
+      ->set('settings', $host['settings']);
 }
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
+
+// Add php files containing custom tasks
+require __DIR__ . '/deployment/sync.php';
