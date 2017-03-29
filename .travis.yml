@@ -30,7 +30,7 @@ before_script:
   - mysql -e 'CREATE DATABASE yii2advanced_test;'
   - php yii_test migrate --interactive=0
   - phantomjs --webdriver=4444 &
-  - php -S 127.0.0.1:8888 -t 'frontend/web' > /dev/null 2>&1 &
+  - php -S 127.0.0.1:8080 -t 'frontend/web' > /dev/null 2>&1 &
   - sleep 5
   - touch common/config/config.yml
 
