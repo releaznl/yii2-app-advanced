@@ -28,3 +28,4 @@ after('deploy:failed', 'deploy:unlock');
 
 // Add php files containing custom tasks
 require __DIR__ . '/deployment/sync.php';
+require __DIR__ . '/deployment/migrate.php';
