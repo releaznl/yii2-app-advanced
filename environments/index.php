@@ -46,7 +46,8 @@ return [
             'frontend/config/main-local.php',
         ],
         'createSymlink' => [
-          'frontend/web/backend' => 'backend/web'
+          'frontend/web/backend' => 'backend/web',
+          'common/config/main-local.php' => 'environments/common/config/main-local.php'
         ]
     ],
     'Production' => [

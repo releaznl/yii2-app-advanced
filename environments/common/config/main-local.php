@@ -7,8 +7,10 @@ use Symfony\Component\Yaml\Yaml;
   when creating an environment localy.
 */
 
-$yaml = Yaml::parse(file_get_contents(__DIR__ . "/config.yml"));
+$yaml = Yaml::parse(file_get_contents(__DIR__ . "/../../../common/config/config.yml"));
 $database = $yaml['database'];
+
+//var_dump(__DIR__); exit;
 
 return [
     'components' => [
