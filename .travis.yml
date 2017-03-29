@@ -41,3 +41,6 @@ before_script:
 script:
   - composer validate --strict
   - vendor/bin/codecept run
+
+after_success:
+  - vendor/bin/test-reporter
