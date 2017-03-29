@@ -11,9 +11,6 @@ $yaml = Yaml::parse(file_get_contents(__DIR__ . "/deploy-config.yml"));
 $general = $yaml['general'];
 set('repository', $general['ssh_repo_url']);
 set('git_tty', true); // [Optional] Allocate tty for git on first deployment
-set('shared_files', []);
-set('shared_dirs', []);
-set('writable_dirs', []);
 
 // Hosts
 foreach($yaml['server'] as $host) {

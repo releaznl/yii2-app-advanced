@@ -5,6 +5,7 @@ task('sync', [
   'sync:sync_folders'
 ]);
 
+desc('Uses RSYNC to sync folders that were given in the deploy-config.yml.');
 task('sync:sync_folders', function() {
   $dirs = get('settings')['sync_folders'];
   sync($dirs);
