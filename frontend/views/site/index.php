@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Html;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -12,6 +14,8 @@ $this->title = 'My Yii Application';
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+
+        <?= Html::a('Go to custom guide', ['/custom/index'], ['class'=>'btn btn-lg btn-success']) ?>
     </div>
 
     <div class="body-content">

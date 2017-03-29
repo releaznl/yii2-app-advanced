@@ -13,5 +13,7 @@ class HomeCest
         $I->seeLink('About');
         $I->click('About');
         $I->see('This is the About page.');
+
     }
+    
 }

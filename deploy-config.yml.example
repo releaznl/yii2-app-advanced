@@ -13,9 +13,17 @@ server:
     branch: 'develop'
     deploy_path: '/var/www/dev.applicationname.com'
     ssh_user: 'username'
+
+# An custom deployment server:
   custom:
     host: 'localhost'
     stage: 'test'
-    branch: 'test'
+    branch: 'develop'
     deploy_path: '/var/www/test.local'
     ssh_user: 'username'
+    settings:
+      sync_folders:
+        uploads:
+          create_if_not_exists: true
+          source: 'shared/uploads/'
+          dest: 'shared/uploads'
