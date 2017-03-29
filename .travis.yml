@@ -43,4 +43,6 @@ script:
   - vendor/bin/codecept run
 
 after_success:
+  - ls
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - vendor/bin/test-reporter
