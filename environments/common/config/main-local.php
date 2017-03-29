@@ -7,8 +7,17 @@ use Symfony\Component\Yaml\Yaml;
   when creating an environment localy.
 */
 
-$yaml = Yaml::parse(file_get_contents(__DIR__ . "/config.yml"));
+// TODO: For some reason Travis CI is smarter with symlinks than my local machine?
+if(getenv('TRAVIS')) {
+  $configfile = "/config.yml";
+} else {
+  $configfile = "/../../../common/config/config.yml";
+}
+
+$yaml = Yaml::parse(file_get_contents(__DIR__ . $configfile));
 $database = $yaml['database'];
+
+//var_dump(__DIR__); exit;
 
 return [
     'components' => [
