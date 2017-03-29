@@ -10,6 +10,10 @@ php:
 # faster builds on new travis setup not using sudo
 sudo: false
 
+addons:
+    code_climate:
+        repo_token: c5a0e7f547f9961f0dff9d813e2c42586eff701082e399e619868c0e4e2507f5
+
 # cache vendor dirs
 cache:
   directories:
