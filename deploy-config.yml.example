@@ -33,10 +33,10 @@ server:
       files:
         upload_files:
           - 'common/config/config.yml'
-      migrations:
+      migrate:
         rbac: true
         db: true
-      sync_folders:
+      sync:
         uploads:
           create_if_not_exists: true
           source: 'shared/uploads/'

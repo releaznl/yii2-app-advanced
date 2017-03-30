@@ -4,8 +4,8 @@ namespace Deployer;
 require 'recipe/yii.php';
 
 use Symfony\Component\Yaml\Yaml;
-// Configuration
 
+// Configuration
 $yaml = Yaml::parse(file_get_contents(__DIR__ . "/deploy-config.yml"));
 
 $general = $yaml['general'];

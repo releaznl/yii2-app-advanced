@@ -7,6 +7,7 @@ task('yii', [
   'migrate'
 ]);
 
+desc("Inits the remote application with the value of init section");
 task('yii:init', function() {
     $init = getenv('settings')['yii']['init'];
     if($init)

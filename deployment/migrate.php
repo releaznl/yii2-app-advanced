@@ -1,4 +1,5 @@
 <?php
+
 namespace Deployer;
 
 desc('Migrates differences to the database on the staging server');
@@ -9,7 +10,7 @@ task('migrate', [
 
 desc("Migrates the RBAC if neccecary.");
 task('migrate:migrate-rbac', function() {
-    if(get('settings')['migrations']['rbac'])
+    if(get('settings')['migrate']['rbac'])
     {
         run('cd {{release_path}} && ./yii migrate --migrationPath=@yii/rbac/migrations --interactive=0');
     }
@@ -17,7 +18,7 @@ task('migrate:migrate-rbac', function() {
 
 desc("Migrates new migrations to the remote database");
 task('migrate:migrate-database', function() {
-    if(get('settings')['migrations']['rbac'])
+    if(get('settings')['migrate']['rbac'])
     {
         run('cd {{release_path}} && ./yii migrate --interactive=0');
     }

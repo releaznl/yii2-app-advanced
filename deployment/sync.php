@@ -1,13 +1,15 @@
 <?php
+
 namespace Deployer;
 
+desc("Executes all the syncing tasks");
 task('sync', [
   'sync:sync_folders'
 ]);
 
-desc('Uses RSYNC to sync folders that were given in the deploy-config.yml.');
+desc("Uses RSYNC to sync folders that were given in the 'sync' section.");
 task('sync:sync_folders', function() {
-  $dirs = get('settings')['sync_folders'];
+  $dirs = get('settings')['sync'];
   sync($dirs);
 });
 
