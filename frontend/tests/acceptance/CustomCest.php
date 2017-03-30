@@ -14,4 +14,15 @@ class CustomCest
         // Xpath usage on image element
         $tester->seeElement("//img[@src='uploads/download.png']");
     }
+
+    public function checkBackend(AcceptanceTester $tester)
+    {
+        $tester->amOnPage(Url::to(['/custom/index']));
+
+        $tester->click('this');
+
+        $tester->wait(1);
+
+        $tester->seeElement("//div[@class='site-login']/h1");
+    }
 }

@@ -18,38 +18,70 @@ Deploying is done in with the help of [Deployer](https://github.com/deployphp/de
 
 ### Explanation:
 ```yaml
+# General information:
 general:
   ssh_repo_url: 'git@github.com:johankladder/yii2-app-advanced.git'
+
+# Staging servers:
 server:
+  # The production server
   production:
     host: 'applicationname.com'
     stage: 'production'
     branch: 'master'
     deploy_path: '/var/www/applicationname.com'
     ssh_user: 'username'
+
+  # The development server
   development:
     host: 'dev.applicationname.com'
     stage: 'development'
     branch: 'develop'
     deploy_path: '/var/www/dev.applicationname.com'
     ssh_user: 'username'
+
+  # An custom deployment server:
   custom:
     host: 'localhost'
     stage: 'test'
     branch: 'develop'
-    deploy_path: '/var/www/test.local'
-    ssh_user: 'johankladder'
+    deploy_path: '/var/www/test.applicationname.com'
+    ssh_user: 'username'
+    settings:
+      yii:
+        init: 'Development'
+      files:
+        upload_files:
+          - 'common/config/config.yml'
+      migrate:
+        rbac: true
+        db: true
+      sync:
+        uploads:
+          create_if_not_exists: true
+          source: 'shared/uploads/'
+          dest: 'shared/uploads'
+
 ```
 
 In the server section you can add different amount of stages. The keys that are given, are not used by Deployer. Explanation:
 
-Key | Explanation
---- | --- |
-`host:` | The server host address (Where should the stage be deployed to)
-`stage:` | The name of the stage. (This stage name can be used when using `dep deploy [stagename]`)
-`branch:` | The branch that the stage contains. (This is the branch that will be pulled on the remote server)
-`deploy_path:` | The path where the sources should be pulled on the remote server. (Should always be absolute)
-`ssh_user:` | The user that is needed for logging in at the remote server.
+Key | Explanation | Required
+--- | --- | ---
+`host:` | The server host address (Where should the stage be deployed to) | Yes
+`stage:` | The name of the stage. (This stage name can be used when using `dep deploy [stagename]`) | Yes
+`branch:` | The branch that the stage contains. (This is the branch that will be pulled on the remote server) | Yes
+`deploy_path:` | The path where the sources should be pulled on the remote server. (Should always be absolute) | Yes
+`ssh_user:` | The user that is needed for logging in at the remote server. | Yes
+`settings:` | Contains specific settings for the given stage. | No
+`yii/init:` | The initialisation enviromnent for Yii2 apps. In an default situation this can be 'Development' or 'Production'. | No
+`files:upload_files` | Paths to files that needs to be uploaded to the remote server to the same location (paths are seen from project folder).  | No
+`migrate:rbac` | Migrates the RBAC functionality of Yii2. | No
+`migrate:db` | Migrates the 'normal' database migrations | No
+`sync:*` | Special feature for syncing remote files with for example an shared folder. That way developers can maintain shared files and sync them to the remote server, without loss of user created files. The uploads key is required when using this functionality, but only used for visual purpose. (rsync) | No
+`sync:create_if_not_exists` | Create the destination folder if not exists. | No
+`sync:source` | Path to folder (from project root) | When using sync option -> Yes, else no.
+`sync:dest` | Destination path (from deploy path) | When using sync option -> Yes, else no.
 
 ### Passwords
 Mentioned that no passwords are asked to login with SSH? The module is using forward-agent. To ensure your user has access to the remote server with forward-agent and no passwords are asked:
