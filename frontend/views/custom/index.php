@@ -1,5 +1,8 @@
 <?php
   use yii\helpers\Html;
+  use yii\helpers\Url;
+
+  $readmeUrl = "https://github.com/johankladder/yii2-app-advanced/blob/master/README.md";
 ?>
 
 <div class="jumbotron">
@@ -25,15 +28,34 @@
             </p>
         </div>
         <div class="col-lg-4">
-            <h2>Heading</h2>
-            <p></p>
+            <h2>Backend</h2>
+            <p>
+              In an default situation the backend of the application can be
+              visited by going to
+              
+              <?= Html::a('this', Url::to('/backend'), [
+                'id' => "backendUrl"
+                ]) ?>
 
+              link. This is because of the symlink that is created in the frontend
+              when executing <code> php init </code> before launching the
+              application.
+            </p>
         </div>
         <div class="col-lg-4">
-            <h2>Heading</h2>
-
-            <p></p>
-
+            <h2>Deployment</h2>
+            <p>
+              Because this application is using Deployer, deployment is pretty
+              easy now. When installing dependencies with composer, Deployer is
+              also installed. To show available commands please run
+              <code>
+                php vendor/deployer/deployer/bin dep
+              </code>
+            </p>
+            <p>
+              For more deployment information, see the
+               <?= Html::a('README.md', Url::to($readmeUrl)) ?> on Github.
+            </p>
         </div>
     </div>
 
