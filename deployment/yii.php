@@ -9,7 +9,7 @@ task('yii', [
 
 desc("Inits the remote application with the value of init section");
 task('yii:init', function() {
-    $init = getenv('settings')['yii']['init'];
+    $init = get('settings')['yii']['init'];
     if($init)
     {
         init_yii($init);
@@ -18,5 +18,5 @@ task('yii:init', function() {
 
 function init_yii($environment)
 {
-    run("cd {{release_path}} && php init --env={$environment} --overwrite=All-");
+    run("cd {{release_path}} && php init --env={$environment} --overwrite=All");
 }

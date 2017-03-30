@@ -3,7 +3,7 @@ namespace Deployer;
 
 desc("Perform all the files tasks");
 task('files', [
-  'upload_files'
+  'files:upload_files'
 ]);
 
 desc("Uploads all the files that where given in the upload tag.");
