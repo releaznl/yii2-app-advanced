@@ -45,8 +45,8 @@ server:
     host: 'localhost'
     stage: 'test'
     branch: 'develop'
-    deploy_path: '/var/www/test.local'
-    ssh_user: 'johankladder'
+    deploy_path: '/var/www/test.applicationname.com'
+    ssh_user: 'username'
     settings:
       yii:
         init: 'Development'
