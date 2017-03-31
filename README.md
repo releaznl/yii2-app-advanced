@@ -53,6 +53,8 @@ server:
       files:
         upload_files:
           - 'common/config/config.yml'
+        show:
+          - 'common/config/config.yml'
       migrate:
         rbac: true
         db: true
@@ -76,6 +78,7 @@ Key | Explanation | Required
 `settings:` | Contains specific settings for the given stage. | No
 `yii/init:` | The initialisation enviromnent for Yii2 apps. In an default situation this can be 'Development' or 'Production'. | No
 `files:upload_files` | Paths to files that needs to be uploaded to the remote server to the same location (paths are seen from project folder).  | No
+`files:show` | Shows the content of an file. Prefixed with the release_path. | No
 `migrate:rbac` | Migrates the RBAC functionality of Yii2. | No
 `migrate:db` | Migrates the 'normal' database migrations | No
 `sync:*` | Special feature for syncing remote files with for example an shared folder. That way developers can maintain shared files and sync them to the remote server, without loss of user created files. The uploads key is required when using this functionality, but only used for visual purpose. (rsync) | No
