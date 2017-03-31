@@ -1,8 +1,11 @@
 <?php
 namespace Deployer;
 
-desc('Executes Yii2 tasks');
-task('yii', [
+desc('Deploys a Yii2 application, complete with given settings.');
+task('deploy-yii', [
+  'deploy',
+  'files',
+  'sync',
   'yii:init',
   'migrate'
 ]);
