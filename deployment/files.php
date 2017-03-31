@@ -63,9 +63,9 @@ function check_file_remote($file)
 
 function show_file_remote($file)
 {
-    $remote_file = "{{release_path}}" . "/" . $file;
-    writeln("<comment>Showing: {$remote_file}</comment>");
-    run("cat " . $remote_file);
+    $remoteFile = "{{release_path}}" . "/" . $file;
+    writeln("<comment>Showing: {$remoteFile}</comment>");
+    run("cat " . $remoteFile);
 }
 
 function upload_file($file)
