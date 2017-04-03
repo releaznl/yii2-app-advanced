@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0047695c7e41e0c1eff2fbd6ca3d4bbc",
+    "content-hash": "099a62f52e41f1ea08021d1fada73b56",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -361,6 +361,61 @@
                 "mailer"
             ],
             "time": "2017-02-24 19:52:51"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "bd17d508c08e7862f4a7630ce49eaff66237039e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/bd17d508c08e7862f4a7630ce49eaff66237039e",
+                "reference": "bd17d508c08e7862f4a7630ce49eaff66237039e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "symfony/console": "~2.8|~3.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-03-30 07:16:02"
         },
         {
             "name": "yiisoft/yii2",
@@ -791,7 +846,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2017-03-28T11:58:30+00:00"
+            "time": "2017-03-28 11:58:30"
         },
         {
             "name": "codeception/verify",
@@ -886,7 +941,7 @@
                 "codeclimate",
                 "coverage"
             ],
-            "time": "2017-03-28T15:33:00+00:00"
+            "time": "2017-03-28 15:33:00"
         },
         {
             "name": "deployer/deployer",
@@ -1151,7 +1206,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2017-03-29T09:42:14+00:00"
+            "time": "2017-03-29 09:42:14"
         },
         {
             "name": "guzzle/guzzle",
@@ -1360,7 +1415,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2017-03-28T16:54:57+00:00"
+            "time": "2017-03-28 16:54:57"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1524,7 +1579,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2015-04-24T19:31:03+00:00"
+            "time": "2015-04-24 19:31:03"
         },
         {
             "name": "padraic/phar-updater",
@@ -1576,7 +1631,7 @@
                 "self-update",
                 "update"
             ],
-            "time": "2016-01-05T23:08:01+00:00"
+            "time": "2016-01-05 23:08:01"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2417,7 +2472,7 @@
                 "github",
                 "test"
             ],
-            "time": "2017-02-25T12:10:28+00:00"
+            "time": "2017-02-25 12:10:28"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -3092,7 +3147,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-27T14:17:59+00:00"
+            "time": "2017-03-27 14:17:59"
         },
         {
             "name": "symfony/console",
@@ -3437,7 +3492,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-26T15:50:20+00:00"
+            "time": "2017-03-26 15:50:20"
         },
         {
             "name": "symfony/finder",
@@ -3643,62 +3698,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-18T17:35:19+00:00"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "76ae7f27e17ab4e5e177d8f9aa6c116d56fe47df"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/76ae7f27e17ab4e5e177d8f9aa6c116d56fe47df",
-                "reference": "76ae7f27e17ab4e5e177d8f9aa6c116d56fe47df",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "symfony/console": "~2.8|~3.0"
-            },
-            "suggest": {
-                "symfony/console": "For validating YAML files using the lint command"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-03-22 19:08:11"
+            "time": "2017-02-18 17:35:19"
         },
         {
             "name": "webmozart/assert",
@@ -3901,6 +3901,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "symfony/yaml": 20,
         "deployer/deployer": 20,
         "codeclimate/php-test-reporter": 20
     },
