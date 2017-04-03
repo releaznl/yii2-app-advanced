@@ -47,7 +47,6 @@ return [
         ],
         'createSymlink' => [
           'frontend/web/backend' => 'backend/web',
-          'common/config/main-local.php' => 'environments/common/config/main-local.php',
           'frontend/web/uploads' => 'shared/uploads'
         ]
     ],
@@ -68,7 +67,6 @@ return [
         ],
         'createSymlink' => [
           'frontend/web/backend' => 'backend/web',
-          'common/config/main-local.php' => 'environments/common/config/main-local.php',
           'frontend/web/uploads' => '../shared/uploads'
         ]
     ],
