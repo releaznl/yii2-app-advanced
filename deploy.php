@@ -3,6 +3,7 @@ namespace Deployer;
 
 require 'recipe/yii.php';
 
+// TODO +bug Fix the composer error when requiring non dev. id:0
 use Symfony\Component\Yaml\Yaml;
 
 // Configuration
