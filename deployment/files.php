@@ -3,21 +3,22 @@ namespace Deployer;
 
 desc("Perform all the files tasks");
 task('files', [
-  'files:upload_files',
+  'files:upload-files',
   'files:show'
 ]);
 
 desc("Uploads all the files that where given in the upload tag.");
-task('files:upload_files', function()
+task('files:upload-files', function()
 {
-    $files = get('settings')['files']['upload_files'];
+    $files = get('settings')['files']['upload-files'];
     if($files)
     {
         foreach($files as $file)
         {
-            if(check_file($file))
+            $info = extract_info($file);
+            if(check_file($info['in']))
             {
-                upload_file($file);
+                upload_file($info);
             }
         }
     }
@@ -38,6 +39,23 @@ task('files:show', function()
         }
     }
 });
+
+function extract_info($file)
+{
+    $splitted_info = explode("||", $file);
+
+    $info = [];
+
+    $info['in'] = trim($splitted_info[0], ' ');
+    $info['to'] = trim($splitted_info[0], ' ');
+
+    if(count($splitted_info) > 1)
+    {
+        $info['to'] = trim($splitted_info[1], ' ');
+    }
+
+    return $info;
+}
 
 function check_file($file)
 {
@@ -70,5 +88,5 @@ function show_file_remote($file)
 
 function upload_file($file)
 {
-    upload($file, "{{release_path}}/" . $file);
+    upload($file['in'], "{{release_path}}/" . $file['to']);
 }

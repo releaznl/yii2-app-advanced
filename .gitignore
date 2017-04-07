@@ -36,3 +36,6 @@ phpunit.phar
 
 # Deployer
 deploy-config.yml
+deploy-config.yml
+vendor/
+composer.phar
