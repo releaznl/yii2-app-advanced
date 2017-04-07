@@ -1,14 +1,22 @@
 <?php
 namespace Deployer;
 
-desc('Executes Yii2 tasks');
-task('yii', [
-  'yii:init',
-  'migrate'
+// TODO:10 Hardcode all the tasks that needs to be executed in the right order. id:1
+desc('Deploys a Yii2 application, complete with given settings.');
+task('deploy-yii', [
+  'deploy',
 ]);
 
+task('deploy-custom', [
+  'files',
+  'sync',
+  'deploy-yii:init',
+  'migrate'
+]);
+before('deploy:symlink', 'deploy-custom');
+
 desc("Inits the remote application with the value of init section");
-task('yii:init', function() {
+task('deploy-yii:init', function() {
     $init = get('settings')['yii']['init'];
     if($init)
     {
