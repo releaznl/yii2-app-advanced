@@ -1,9 +1,9 @@
 <?php
 namespace common\components\behavior;
 
-use common\components\db\ActiveRecord;
 use yii\base\Event;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * SoftDelete
@@ -27,14 +27,15 @@ class SoftDeleteBehavior extends TimestampBehavior
 	/**
 	 * @var string SoftDelete attribute
 	 */
-	public $attribute = ActiveRecord::DELETE_ATTRIBUTE;
-
+	public $attribute = 'deleted_at';
+	public $deleted_by = 'deleted_by';
+	
 	/**
 	 * @var bool If true, this behavior will process '$model->delete()' as a soft-delete. Thus, the
 	 *           only way to truly delete a record is to call '$model->forceDelete()'
 	 */
 	public $safeMode = true;
-
+	
 	/**
 	 * @inheritdoc
 	 */
@@ -42,7 +43,7 @@ class SoftDeleteBehavior extends TimestampBehavior
 	{
 		return [ActiveRecord::EVENT_BEFORE_DELETE => 'deleteModel'];
 	}
-
+	
 	/**
 	 * Set the attribute with the current timestamp to mark as deleted
 	 *
@@ -58,7 +59,7 @@ class SoftDeleteBehavior extends TimestampBehavior
 		$this->remove();
 		$event->isValid = false;
 	}
-
+	
 	/**
 	 * Remove (aka soft-delete) record
 	 */
@@ -66,13 +67,16 @@ class SoftDeleteBehavior extends TimestampBehavior
 	{
 		// evaluate timestamp and set attribute
 		$timestamp = $this->getValue(null);
+		$user = \Yii::$app->get('user', false);
 		$attribute = $this->attribute;
-
+		$deleted_by = $this->deleted_by;
+		
 		// Set attributes and save the record
 		$this->owner->$attribute = $timestamp;
-		$this->owner->save(false, [$attribute]);
+		$this->owner->$deleted_by = $user && !$user->isGuest ? $user->id : null;
+		$this->owner->save(false, [$attribute, $deleted_by]);
 	}
-
+	
 	/**
 	 * Restore soft-deleted record
 	 */
@@ -80,11 +84,14 @@ class SoftDeleteBehavior extends TimestampBehavior
 	{
 		// mark attribute as null
 		$attribute = $this->attribute;
+		$deleted_by = $this->deleted_by;
+		
+		$this->owner->$deleted_by = null;
 		$this->owner->$attribute = null;
 		// save record
 		$this->owner->save(false, [$attribute]);
 	}
-
+	
 	/**
 	 * Delete record from database regardless of the $safeMode attribute
 	 */
