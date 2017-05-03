@@ -4,4 +4,3 @@ database:
   name: "yii2advanced" # The name of the database.
   username: "root" # Username of user with rights to database.
   password: "" # Password of the above user.
-``
