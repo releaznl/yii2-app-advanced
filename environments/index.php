@@ -70,4 +70,26 @@ return [
           'frontend/web/uploads' => '../shared/uploads'
         ]
     ],
+    'Acceptance' => [
+        'path' => 'dev',
+        'setWritable' => [
+            'backend/runtime',
+            'backend/web/assets',
+            'frontend/runtime',
+            'frontend/web/assets',
+        ],
+        'setExecutable' => [
+            'yii',
+        ],
+        'setCookieValidationKey' => [
+            'backend/config/main-local.php',
+            'frontend/config/main-local.php',
+        ],
+        'createSymlink' => [
+          'frontend/web/backend' => 'backend/web',
+          'frontend/web/files' => '../../shared/files',
+          'backend/web/uploads' => '../../shared/uploads',
+          'backend/web/doro' => '../../shared/doro'
+        ]
+    ],
 ];
