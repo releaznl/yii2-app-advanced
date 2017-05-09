@@ -31,7 +31,7 @@ server:
       yii:
         init: 'Development'
       files:
-        upload_files:
+        upload-files:
           - 'common/config/config.yml'
         show:
           - 'common/config/config.yml'
