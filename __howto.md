@@ -2,9 +2,9 @@
 
 ## Development:
 - Voer `composer.phar install` uit.
-- Tijdens development initialiseer yii naar de 'Development' omgeving. Voer daarom `php init` uit in de root van het project en volg eventuele instructies.
+- Tijdens development initialiseer je yii naar de 'Development' omgeving. Voer daarom `php init` uit in de root van het project en volg eventuele instructies.
 - Tijdens initialisatie is er een `common/config/config.yml.example` bestand aangemaakt. Dupliceer dit bestand naar `common/config/config.yml` en voer eventuele secrets in. Dit bestand wordt nooit meegepushed.
-- Wanneer er nieuwe dependencies worden toegoevoegd, wordt er eenmalig `composer.phar update` uitgevoerd. Daarna wordt de .lock file altijd meegepushed.
+- Wanneer er nieuwe dependencies worden toegevoegd, wordt eenmalig `composer.phar update` uitgevoerd. Daarna wordt de .lock file altijd meegepushed.
 
 ## Deployment:
 - Zorg ervoor dat je `deploy-config.yml.example` gedupliceerd naar `deploy-config.yml`. Vul/pas zonodig dit bestand aan.
@@ -18,3 +18,4 @@
 
 ### Tips:
 - In de example wordt een lokale config.yml meegestuurd via ssh. Er kan ook gekozen worden om deze eenmalig over te sturen via FTP en daarna in een systeem variabele te zetten waar de locatie is van dit bestand. Zie `common/config/main-local.php` voor meer info.
+- Om meer configs toe te voegen in de `common/config/config.yml`, zorg er dan voor dat dit ook in de `environment/[stage]/common/config.yml.example`.
