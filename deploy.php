@@ -20,7 +20,10 @@ foreach($yaml['server'] as $host) {
       ->stage($host['stage'])
       ->set('branch', $host['branch'])
       ->set('deploy_path', $host['deploy_path'])
-      ->set('settings', $host['settings']);
+      ->set('settings', $host['settings'])
+      ->set('shared_files', [
+            'common/config/config.yml'
+      ]);
 }
 
 // [Optional] if deploy fails automatically unlock.
