@@ -67,7 +67,7 @@ return [
         ],
         'createSymlink' => [
           'frontend/web/backend' => 'backend/web',
-          'frontend/web/uploads' => '../shared/uploads'
+          'frontend/web/uploads' => '../../shared/uploads'
         ]
     ],
     'Acceptance' => [
@@ -87,9 +87,7 @@ return [
         ],
         'createSymlink' => [
           'frontend/web/backend' => 'backend/web',
-          'frontend/web/files' => '../../shared/files',
           'backend/web/uploads' => '../../shared/uploads',
-          'backend/web/doro' => '../../shared/doro'
         ]
     ],
 ];
