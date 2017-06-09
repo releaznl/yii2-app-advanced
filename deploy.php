@@ -1,4 +1,5 @@
 <?php
+
 namespace Deployer;
 
 require 'recipe/yii.php';
@@ -13,17 +14,17 @@ set('repository', $general['ssh_repo_url']);
 set('git_tty', true); // [Optional] Allocate tty for git on first deployment
 
 // Hosts
-foreach($yaml['server'] as $host) {
-  host($host['host'])
-      ->user($host['ssh_user'])
-      ->forwardAgent()
-      ->stage($host['stage'])
-      ->set('branch', $host['branch'])
-      ->set('deploy_path', $host['deploy_path'])
-      ->set('settings', $host['settings'])
-      ->set('shared_files', [
+foreach ($yaml['server'] as $host) {
+    host($host['host'])
+        ->user($host['ssh_user'])
+        ->forwardAgent()
+        ->stage($host['stage'])
+        ->set('branch', $host['branch'])
+        ->set('deploy_path', $host['deploy_path'])
+        ->set('settings', $host['settings'])
+        ->set('shared_files', [
             'common/config/config.yml'
-      ]);
+        ]);
 }
 
 // [Optional] if deploy fails automatically unlock.
