@@ -18,7 +18,7 @@ task('migrate:migrate-rbac', function() {
 
 desc("Migrates new migrations to the remote database");
 task('migrate:migrate-database', function() {
-    if(get('settings')['migrate']['rbac'])
+    if(get('settings')['migrate']['db'])
     {
         run('cd {{release_path}} && ./yii migrate --interactive=0');
     }
