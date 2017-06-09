@@ -10,6 +10,7 @@ task('deploy-yii', [
 task('deploy-custom', [
   'files',
   'sync',
+  'deploy:shared',
   'deploy-yii:init',
   'migrate'
 ]);
