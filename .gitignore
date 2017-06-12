@@ -35,7 +35,8 @@ phpunit.phar
 /.vagrant
 
 # Deployer
+deploy.php
 deploy-config.yml
-deploy-config.yml
+deploy-config.yml.example
 vendor/
 composer.phar
