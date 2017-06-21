@@ -71,7 +71,7 @@ return [
         ]
     ],
     'Acceptance' => [
-        'path' => 'dev',
+        'path' => 'accept',
         'setWritable' => [
             'backend/runtime',
             'backend/web/assets',
