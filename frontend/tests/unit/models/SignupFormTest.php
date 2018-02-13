@@ -25,7 +25,7 @@ class SignupFormTest extends Unit
         ];
     }
 
-    public function testCorrectSignup(): void
+    public function testCorrectSignup()
     {
         $model = new SignupForm([
             'username' => 'some_username',
@@ -42,7 +42,7 @@ class SignupFormTest extends Unit
         expect($user->validatePassword('some_password'))->true();
     }
 
-    public function testNotCorrectSignup(): void
+    public function testNotCorrectSignup()
     {
         $model = new SignupForm([
             'username' => 'troy.becker',

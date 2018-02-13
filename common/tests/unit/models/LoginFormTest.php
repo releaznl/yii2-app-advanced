@@ -29,7 +29,7 @@ class LoginFormTest extends Unit
         ];
     }
 
-    public function testLoginNoUser(): void
+    public function testLoginNoUser()
     {
         $model = new LoginForm([
             'username' => 'not_existing_username',
@@ -40,7 +40,7 @@ class LoginFormTest extends Unit
         expect('user should not be logged in', Yii::$app->user->isGuest)->true();
     }
 
-    public function testLoginWrongPassword(): void
+    public function testLoginWrongPassword()
     {
         $model = new LoginForm([
             'username' => 'bayer.hudson',
@@ -52,7 +52,7 @@ class LoginFormTest extends Unit
         expect('user should not be logged in', Yii::$app->user->isGuest)->true();
     }
 
-    public function testLoginCorrect(): void
+    public function testLoginCorrect()
     {
         $model = new LoginForm([
             'username' => 'bayer.hudson',

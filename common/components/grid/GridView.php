@@ -1,4 +1,5 @@
 <?php
+
 namespace common\components\grid;
 
 /**
@@ -7,9 +8,9 @@ namespace common\components\grid;
  */
 class GridView extends \yii\grid\GridView
 {
-	/** @var array */
-	public $filterOptions = ['class' => 'filters form-control'];
-	/** @var array */
-	public $footerRowOptions = ['style' => 'font-weight:bold;'];
+    /** @var array */
+    public $filterOptions = ['class' => 'filters form-control'];
+    /** @var array */
+    public $footerRowOptions = ['style' => 'font-weight:bold;'];
 
 }

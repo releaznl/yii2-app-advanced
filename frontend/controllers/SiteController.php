@@ -1,17 +1,21 @@
 <?php
+
 namespace frontend\controllers;
 
-use Yii;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
+use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+use Yii;
+use yii\base\InvalidParamException;
+use yii\captcha\CaptchaAction;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
+use yii\web\Controller;
+use yii\web\ErrorAction;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -21,11 +25,11 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
@@ -41,7 +45,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -52,14 +56,14 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
+    public function actions(): array
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => ErrorAction::class,
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => CaptchaAction::class,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
@@ -68,17 +72,17 @@ class SiteController extends Controller
     /**
      * Displays homepage.
      *
-     * @return mixed
+     * @return string
+     * @throws InvalidParamException
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
         return $this->render('index');
     }
 
     /**
-     * Logs in a user.
-     *
-     * @return mixed
+     * @return string|Response
+     * @throws InvalidParamException
      */
     public function actionLogin()
     {
@@ -89,29 +93,29 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Logs out the current user.
-     *
-     * @return mixed
+     * @return Response
      */
-    public function actionLogout()
+    public function actionLogout(): Response
     {
         Yii::$app->user->logout();
 
         return $this->goHome();
     }
 
+
     /**
      * Displays contact page.
      *
-     * @return mixed
+     * @return string|Response
+     * @throws InvalidParamException
      */
     public function actionContact()
     {
@@ -124,19 +128,20 @@ class SiteController extends Controller
             }
 
             return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
     }
 
     /**
      * Displays about page.
      *
-     * @return mixed
+     * @return string
+     * @throws InvalidParamException
      */
-    public function actionAbout()
+    public function actionAbout(): string
     {
         return $this->render('about');
     }
@@ -144,17 +149,19 @@ class SiteController extends Controller
     /**
      * Signs user up.
      *
-     * @return mixed
+     * @return string|Response
+     * @throws InvalidParamException
      */
     public function actionSignup()
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+            $user = $model->signup();
+
+            if ($user && Yii::$app->getUser()->login($user)) {
+                return $this->goHome();
             }
+
         }
 
         return $this->render('signup', [
@@ -165,7 +172,8 @@ class SiteController extends Controller
     /**
      * Requests password reset.
      *
-     * @return mixed
+     * @return string|Response
+     * @throws InvalidParamException
      */
     public function actionRequestPasswordReset()
     {
@@ -175,9 +183,9 @@ class SiteController extends Controller
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
                 return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
             }
+
+            Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
         }
 
         return $this->render('requestPasswordResetToken', [
@@ -188,9 +196,10 @@ class SiteController extends Controller
     /**
      * Resets password.
      *
-     * @param string $token
-     * @return mixed
+     * @param $token
+     * @return string|Response
      * @throws BadRequestHttpException
+     * @throws InvalidParamException
      */
     public function actionResetPassword($token)
     {

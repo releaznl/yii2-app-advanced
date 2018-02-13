@@ -1,9 +1,12 @@
 <?php
+
 namespace common\components\db;
 
 use common\components\behavior\CreatedUpdatedBehavior;
-use Yii;
+use common\components\behavior\SoftDeleteBehavior;
+use common\models\User;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 
 /**
  * Class DeleteActiveRecord
@@ -18,7 +21,7 @@ class DeleteActiveRecord extends ReleazActiveRecord
      */
     public static function find()
     {
-        return new DeletedQuery(self::tableName(), get_called_class());
+        return new DeletedQuery(self::tableName(), static::class);
     }
 
     /**
@@ -27,20 +30,19 @@ class DeleteActiveRecord extends ReleazActiveRecord
     public static function findDeleted()
     {
         return parent::find()
-            ->where(['NOT', [self::tableName() . '.' . self::DELETE_ATTRIBUTE=> null]])
-            ->andWhere(['organization_id' => Yii::$app->user->identity->organizationId]);
+            ->where(['NOT', [self::tableName() . '.' . self::DELETE_ATTRIBUTE => null]]);
     }
 
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             TimestampBehavior::className(),
             CreatedUpdatedBehavior::className(),
             'softDeleteBehavior' => [
-                'class'     => \common\components\behavior\SoftDeleteBehavior::className(),
+                'class' => SoftDeleteBehavior::class,
                 'attribute' => self::DELETE_ATTRIBUTE,
             ],
         ];
@@ -49,8 +51,8 @@ class DeleteActiveRecord extends ReleazActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDeletedBy()
+    public function getDeletedBy(): ActiveQuery
     {
-        return $this->hasOne(\common\models\User::className(), ['id' => 'deleted_by']);
+        return $this->hasOne(User::class, ['id' => 'deleted_by']);
     }
 }

@@ -17,6 +17,6 @@ class DeletedQuery extends ActiveQuery
     public function __construct($table, $config = [])
     {
         $this->table_name = $table;
-        parent::__construct($config);
+        parent::__construct($table, $config);
     }
 }

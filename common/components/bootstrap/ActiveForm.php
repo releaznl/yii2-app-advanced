@@ -1,7 +1,6 @@
 <?php
-namespace common\components\bootstrap;
 
-use Yii;
+namespace common\components\bootstrap;
 
 /**
  * Class ActiveForm
@@ -9,7 +8,13 @@ use Yii;
  */
 class ActiveForm extends \yii\bootstrap\ActiveForm
 {
-	/** @var string  */
-	public $layout = 'horizontal';
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->layout = 'horizontal';
 
+        parent::init();
+    }
 }

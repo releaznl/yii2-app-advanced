@@ -25,7 +25,7 @@ class LoginCest
     /**
      * @param FunctionalTester $I
      */
-    public function loginUser(FunctionalTester $I): void
+    public function loginUser(FunctionalTester $I)
     {
         $I->amOnPage('/site/login');
         $I->fillField('Username', 'erau');

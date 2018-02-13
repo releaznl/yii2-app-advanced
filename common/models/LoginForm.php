@@ -2,6 +2,7 @@
 namespace common\models;
 
 use Yii;
+use yii\base\InvalidParamException;
 use yii\base\Model;
 
 /**
@@ -9,17 +10,21 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
+    /** @var string */
     public $username;
+    /** @var string */
     public $password;
+    /** @var bool */
     public $rememberMe = true;
 
+    /** @var User */
     private $_user;
 
 
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             // username and password are both required
@@ -52,14 +57,15 @@ class LoginForm extends Model
      * Logs in a user using the provided username and password.
      *
      * @return bool whether the user is logged in successfully
+     * @throws InvalidParamException
      */
-    public function login()
+    public function login(): bool
     {
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**

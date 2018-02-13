@@ -8,7 +8,7 @@ use yii\mail\MessageInterface;
 
 class ContactFormTest extends Unit
 {
-    public function testSendEmail(): void
+    public function testSendEmail()
     {
         $model = new ContactForm();
 

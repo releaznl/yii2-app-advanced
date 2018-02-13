@@ -28,14 +28,14 @@ class PasswordResetRequestFormTest extends Unit
         ];
     }
 
-    public function testSendMessageWithWrongEmailAddress(): void
+    public function testSendMessageWithWrongEmailAddress()
     {
         $model = new PasswordResetRequestForm();
         $model->email = 'not-existing-email@example.com';
         expect_not($model->sendEmail());
     }
 
-    public function testNotSendEmailsToInactiveUser(): void
+    public function testNotSendEmailsToInactiveUser()
     {
         $user = $this->tester->grabFixture('user', 3);
         $model = new PasswordResetRequestForm();
@@ -43,7 +43,7 @@ class PasswordResetRequestFormTest extends Unit
         expect_not($model->sendEmail());
     }
 
-    public function testSendEmailSuccessfully(): void
+    public function testSendEmailSuccessfully()
     {
         $userFixture = $this->tester->grabFixture('user', 0);
 

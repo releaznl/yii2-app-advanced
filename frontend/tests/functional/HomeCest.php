@@ -9,7 +9,7 @@ class HomeCest
     /**
      * @param FunctionalTester $I
      */
-    public function checkOpen(FunctionalTester $I): void
+    public function checkOpen(FunctionalTester $I)
     {
         $I->amOnPage(\Yii::$app->homeUrl);
         $I->see('My Company');

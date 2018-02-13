@@ -23,7 +23,7 @@ class ResetPasswordFormTest extends Unit
         ];
     }
 
-    public function testResetWrongToken(): void
+    public function testResetWrongToken()
     {
         $this->tester->expectException(InvalidParamException::class, function () {
             new ResetPasswordForm('');
@@ -34,7 +34,7 @@ class ResetPasswordFormTest extends Unit
         });
     }
 
-    public function testResetCorrectToken(): void
+    public function testResetCorrectToken()
     {
         $user = $this->tester->grabFixture('user', 0);
         $form = new ResetPasswordForm($user['password_reset_token']);

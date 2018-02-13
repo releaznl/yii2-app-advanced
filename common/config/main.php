@@ -4,7 +4,7 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
     ],
-    'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'vendorPath' => dirname(__DIR__, 2) . '/vendor',
     'components' => [
         'cache' => [
             'class' => \yii\caching\FileCache::class,
@@ -18,13 +18,13 @@ return [
             'class' => \yii\web\AssetManager::class,
             'bundles' => [
                 \yii\bootstrap\BootstrapAsset::class => [
-                    'sourcePath' => dirname(dirname(__DIR__)) . '/common/assets/bootstrap4/dist',
+                    'sourcePath' => dirname(__DIR__, 2) . '/common/assets/bootstrap4/dist',
                 ],
                 \yii\bootstrap\BootstrapPluginAsset::class => [
-                    'sourcePath' => dirname(dirname(__DIR__)) . '/common/assets/bootstrap4/dist',
+                    'sourcePath' => dirname(__DIR__, 2) . '/common/assets/bootstrap4/dist',
                 ],
                 \yii\bootstrap\BootstrapThemeAsset::class => [
-                    'sourcePath' => dirname(dirname(__DIR__)) . '/common/assets/bootstrap4/dist',
+                    'sourcePath' => dirname(__DIR__, 2) . '/common/assets/bootstrap4/dist',
                 ],
             ],
         ],

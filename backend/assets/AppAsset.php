@@ -2,22 +2,28 @@
 
 namespace backend\assets;
 
+use yii\bootstrap\BootstrapAsset;
 use yii\web\AssetBundle;
+use yii\web\YiiAsset;
 
 /**
  * Main backend application asset bundle.
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = [
-        'css/site.css',
-    ];
-    public $js = [
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
+    public function init()
+    {
+        $this->basePath = '@webroot';
+        $this->baseUrl = '@web';
+        $this->css = [
+            'css/site.css',
+        ];
+
+        $this->depends = [
+            YiiAsset::class,
+            BootstrapAsset::class,
+        ];
+
+        parent::init();
+    }
 }

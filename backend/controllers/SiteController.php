@@ -1,11 +1,14 @@
 <?php
+
 namespace backend\controllers;
 
-use Yii;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
+use Yii;
+use yii\base\InvalidParamException;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+use yii\web\ErrorAction;
 
 /**
  * Site controller
@@ -15,11 +18,11 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -33,7 +36,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -48,7 +51,7 @@ class SiteController extends Controller
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => ErrorAction::class,
             ],
         ];
     }
@@ -57,8 +60,9 @@ class SiteController extends Controller
      * Displays homepage.
      *
      * @return string
+     * @throws InvalidParamException
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
         return $this->render('index');
     }
@@ -66,7 +70,8 @@ class SiteController extends Controller
     /**
      * Login action.
      *
-     * @return string
+     * @return string|\yii\web\Response
+     * @throws InvalidParamException
      */
     public function actionLogin()
     {
@@ -77,11 +82,12 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+
     }
 
     /**
@@ -89,7 +95,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLogout()
+    public function actionLogout(): string
     {
         Yii::$app->user->logout();
 

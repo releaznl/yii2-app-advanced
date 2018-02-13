@@ -13,7 +13,7 @@ class SignupCest
     /**
      * @param FunctionalTester $I
      */
-    public function _before(FunctionalTester $I): void
+    public function _before(FunctionalTester $I)
     {
         $I->amOnRoute('site/signup');
     }
@@ -21,7 +21,7 @@ class SignupCest
     /**
      * @param FunctionalTester $I
      */
-    public function signupWithEmptyFields(FunctionalTester $I): void
+    public function signupWithEmptyFields(FunctionalTester $I)
     {
         $I->see('Signup', 'h1');
         $I->see('Please fill out the following fields to signup:');
@@ -35,7 +35,7 @@ class SignupCest
     /**
      * @param FunctionalTester $I
      */
-    public function signupWithWrongEmail(FunctionalTester $I): void
+    public function signupWithWrongEmail(FunctionalTester $I)
     {
         $I->submitForm(
             $this->formId, [
@@ -52,7 +52,7 @@ class SignupCest
     /**
      * @param FunctionalTester $I
      */
-    public function signupSuccessfully(FunctionalTester $I): void
+    public function signupSuccessfully(FunctionalTester $I)
     {
         $I->submitForm($this->formId, [
             'SignupForm[username]' => 'tester',

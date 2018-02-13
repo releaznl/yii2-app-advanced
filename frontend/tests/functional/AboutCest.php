@@ -9,7 +9,7 @@ class AboutCest
     /**
      * @param FunctionalTester $I
      */
-    public function checkAbout(FunctionalTester $I): void
+    public function checkAbout(FunctionalTester $I)
     {
         $I->amOnRoute('site/about');
         $I->see('About', 'h1');

@@ -10,10 +10,11 @@ use common\models\User;
  */
 class ResetPasswordForm extends Model
 {
+    /** @var string */
     public $password;
 
     /**
-     * @var \common\models\User
+     * @var User
      */
     private $_user;
 
@@ -23,7 +24,7 @@ class ResetPasswordForm extends Model
      *
      * @param string $token
      * @param array $config name-value pairs that will be used to initialize the object properties
-     * @throws \yii\base\InvalidParamException if token is empty or not valid
+     * @throws InvalidParamException if token is empty or not valid
      */
     public function __construct($token, $config = [])
     {
@@ -40,7 +41,7 @@ class ResetPasswordForm extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             ['password', 'required'],
@@ -53,7 +54,7 @@ class ResetPasswordForm extends Model
      *
      * @return bool if password was reset.
      */
-    public function resetPassword()
+    public function resetPassword(): bool
     {
         $user = $this->_user;
         $user->setPassword($this->password);

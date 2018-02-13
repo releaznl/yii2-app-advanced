@@ -10,7 +10,7 @@ class ContactCest
     /**
      * @param FunctionalTester $I
      */
-    public function _before(FunctionalTester $I): void
+    public function _before(FunctionalTester $I)
     {
         $I->amOnPage('site/contact');
     }
@@ -18,7 +18,7 @@ class ContactCest
     /**
      * @param FunctionalTester $I
      */
-    public function checkContact(FunctionalTester $I): void
+    public function checkContact(FunctionalTester $I)
     {
         $I->see('Contact', 'h1');
     }
@@ -26,7 +26,7 @@ class ContactCest
     /**
      * @param FunctionalTester $I
      */
-    public function checkContactSubmitNoData(FunctionalTester $I): void
+    public function checkContactSubmitNoData(FunctionalTester $I)
     {
         $I->submitForm('#contact-form', []);
         $I->see('Contact', 'h1');
@@ -40,7 +40,7 @@ class ContactCest
     /**
      * @param FunctionalTester $I
      */
-    public function checkContactSubmitNotCorrectEmail(FunctionalTester $I): void
+    public function checkContactSubmitNotCorrectEmail(FunctionalTester $I)
     {
         $I->submitForm('#contact-form', [
             'ContactForm[name]' => 'tester',
@@ -59,7 +59,7 @@ class ContactCest
     /**
      * @param FunctionalTester $I
      */
-    public function checkContactSubmitCorrectData(FunctionalTester $I): void
+    public function checkContactSubmitCorrectData(FunctionalTester $I)
     {
         $I->submitForm('#contact-form', [
             'ContactForm[name]' => 'tester',
