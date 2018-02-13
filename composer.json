@@ -18,25 +18,26 @@
     "source": "https://github.com/yiisoft/yii2"
   },
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
-    "php": ">=5.4.0",
-    "yiisoft/yii2": "~2.0.6",
-    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "php": ">=7.1.0",
+    "yiisoft/yii2": "^2.0.13",
+    "yiisoft/yii2-bootstrap": "^2.1",
     "yiisoft/yii2-swiftmailer": "~2.0.0",
-    "symfony/yaml": "^3.3@dev",
-    "yiisoft/yii2-debug": "~2.0.0",
-    "yiisoft/yii2-gii": "~2.0.0",
+    "symfony/yaml": "^3.3",
     "fxp/composer-asset-plugin": "^1.3.1"
   },
   "require-dev": {
-    "yiisoft/yii2-debug": "~2.0.0",
-    "yiisoft/yii2-gii": "~2.0.0",
-    "yiisoft/yii2-faker": "~2.0.0",
-    "codeception/codeception": "^2.2.3",
-    "symfony/yaml": "^3.3@dev",
-    "releaz/deployer": "~1.2.5",
-    "codeception/base": "^2.2.3",
-    "codeception/verify": "~0.3.1"
+    "codeception/base": "^2.2.10",
+    "facebook/webdriver": "^1.0.1",
+    "yiisoft/yii2-faker": "^2.0.0",
+    "codeception/verify": "^0.3.1",
+    "bazilio/yii2-stubs-generator": "^1.1.1",
+    "releaz/deployer": "^1.2.5",
+    "elisdn/yii2-gii-fixture-generator": "^1.1",
+    "yiisoft/yii2-debug": "^2.0.0",
+    "yiisoft/yii2-gii": "^2.0.0",
+    "kartik-v/yii2-widget-select2": "^2.1"
   },
   "config": {
     "process-timeout": 1800
