@@ -37,6 +37,5 @@ phpunit.phar
 # Deployer
 deploy.php
 deploy-config.yml
-deploy-config.yml.example
 vendor/
 composer.phar
