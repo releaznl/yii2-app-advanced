@@ -2,5 +2,6 @@
 database:
   location: "localhost" # Location of the database, mostly localhost.
   name: "yii2advanced" # The name of the database.
+  test_name: "yii2advanced_test" # The name of the test database
   username: "root" # Username of user with rights to database.
   password: "" # Password of the above user.

@@ -7,18 +7,32 @@ use common\fixtures\UserFixture;
 
 class LoginCest
 {
-    public function _before(FunctionalTester $I)
+    /**
+     * @return array
+     */
+    public function _fixtures(): array
     {
-        $I->haveFixtures([
+        return [
             'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'login_data.php'
+                'class' => UserFixture::class,
             ]
-        ]);
+        ];
+    }
+
+    /**
+     * @param FunctionalTester $I
+     */
+    public function _before(FunctionalTester $I): void
+    {
         $I->amOnRoute('site/login');
     }
 
-    protected function formParams($login, $password)
+    /**
+     * @param $login
+     * @param $password
+     * @return array
+     */
+    protected function formParams($login, $password): array
     {
         return [
             'LoginForm[username]' => $login,
@@ -26,20 +40,29 @@ class LoginCest
         ];
     }
 
-    public function checkEmpty(FunctionalTester $I)
+    /**
+     * @param FunctionalTester $I
+     */
+    public function checkEmpty(FunctionalTester $I): void
     {
         $I->submitForm('#login-form', $this->formParams('', ''));
         $I->seeValidationError('Username cannot be blank.');
         $I->seeValidationError('Password cannot be blank.');
     }
 
-    public function checkWrongPassword(FunctionalTester $I)
+    /**
+     * @param FunctionalTester $I
+     */
+    public function checkWrongPassword(FunctionalTester $I): void
     {
         $I->submitForm('#login-form', $this->formParams('admin', 'wrong'));
         $I->seeValidationError('Incorrect username or password.');
     }
-    
-    public function checkValidLogin(FunctionalTester $I)
+
+    /**
+     * @param FunctionalTester $I
+     */
+    public function checkValidLogin(FunctionalTester $I): void
     {
         $I->submitForm('#login-form', $this->formParams('erau', 'password_0'));
         $I->see('Logout (erau)', 'form button[type=submit]');

@@ -1,12 +1,14 @@
 <?php
+
 namespace frontend\tests\unit\models;
 
-use Yii;
+use Codeception\Test\Unit;
 use frontend\models\ContactForm;
+use yii\mail\MessageInterface;
 
-class ContactFormTest extends \Codeception\Test\Unit
+class ContactFormTest extends Unit
 {
-    public function testSendEmail()
+    public function testSendEmail(): void
     {
         $model = new ContactForm();
 
@@ -23,7 +25,7 @@ class ContactFormTest extends \Codeception\Test\Unit
         $this->tester->seeEmailIsSent();
 
         $emailMessage = $this->tester->grabLastSentEmail();
-        expect('valid email is sent', $emailMessage)->isInstanceOf('yii\mail\MessageInterface');
+        expect('valid email is sent', $emailMessage)->isInstanceOf(MessageInterface::class);
         expect($emailMessage->getTo())->hasKey('admin@example.com');
         expect($emailMessage->getFrom())->hasKey('tester@example.com');
         expect($emailMessage->getSubject())->equals('very important letter subject');

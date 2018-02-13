@@ -7,7 +7,7 @@ use Symfony\Component\Yaml\Yaml;
   when creating an environment localy.
 */
 
-$configfile = '/config.yml';
+$configFile = '/config.yml';
 
 $yaml = Yaml::parse(file_get_contents(__DIR__ . $configfile));
 $database = $yaml['database'];
@@ -16,14 +16,14 @@ $email = $yaml['email'];
 return [
     'components' => [
         'db' => [
-            'class' => 'yii\db\Connection',
+            'class' => \yii\db\Connection::class,
             'dsn' => "mysql:host={$database['location']};dbname=" . $database['name'],
             'username' => $database['username'],
             'password' => $database['password'],
             'charset' => 'utf8',
         ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+            'class' => \yii\swiftmailer\Mailer::class,
             'viewPath' => '@common/mail',
             'transport' => [
                 'class' => 'Swift_SmtpTransport',

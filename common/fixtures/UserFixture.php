@@ -2,8 +2,17 @@
 namespace common\fixtures;
 
 use yii\test\ActiveFixture;
+use common\models\User;
 
 class UserFixture extends ActiveFixture
 {
-    public $modelClass = 'common\models\User';
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->modelClass = User::class;
+
+        parent::init();
+    }
 }

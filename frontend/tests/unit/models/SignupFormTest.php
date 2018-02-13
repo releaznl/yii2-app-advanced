@@ -2,27 +2,30 @@
 namespace frontend\tests\unit\models;
 
 use common\fixtures\UserFixture;
+use common\models\User;
 use frontend\models\SignupForm;
+use Codeception\Test\Unit;
 
-class SignupFormTest extends \Codeception\Test\Unit
+class SignupFormTest extends Unit
 {
     /**
      * @var \frontend\tests\UnitTester
      */
     protected $tester;
 
-
-    public function _before()
+    /**
+     * @return array
+     */
+    public function _fixtures(): array
     {
-        $this->tester->haveFixtures([
+        return [
             'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'user.php'
+                'class' => UserFixture::class,
             ]
-        ]);
+        ];
     }
 
-    public function testCorrectSignup()
+    public function testCorrectSignup(): void
     {
         $model = new SignupForm([
             'username' => 'some_username',
@@ -32,14 +35,14 @@ class SignupFormTest extends \Codeception\Test\Unit
 
         $user = $model->signup();
 
-        expect($user)->isInstanceOf('common\models\User');
+        expect($user)->isInstanceOf(User::class);
 
         expect($user->username)->equals('some_username');
         expect($user->email)->equals('some_email@example.com');
         expect($user->validatePassword('some_password'))->true();
     }
 
-    public function testNotCorrectSignup()
+    public function testNotCorrectSignup(): void
     {
         $model = new SignupForm([
             'username' => 'troy.becker',

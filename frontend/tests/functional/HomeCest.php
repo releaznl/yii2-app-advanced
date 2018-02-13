@@ -6,7 +6,10 @@ use frontend\tests\FunctionalTester;
 
 class HomeCest
 {
-    public function checkOpen(FunctionalTester $I)
+    /**
+     * @param FunctionalTester $I
+     */
+    public function checkOpen(FunctionalTester $I): void
     {
         $I->amOnPage(\Yii::$app->homeUrl);
         $I->see('My Company');
@@ -15,5 +18,4 @@ class HomeCest
         $I->see('This is the About page.');
 
     }
-    
 }
