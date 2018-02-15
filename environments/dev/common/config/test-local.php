@@ -27,7 +27,7 @@ return yii\helpers\ArrayHelper::merge(
     [
         'components' => [
             'db' => [
-                'dsn' => "mysql:host={$database['location']};dbname=" . $database['name'],
+                'dsn' => "mysql:host={$database['location']};dbname=" . $database['test_name'],
                 'username' => $database['username'],
                 'password' => $database['password'],
             ]
