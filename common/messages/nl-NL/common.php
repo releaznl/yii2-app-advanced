@@ -8,6 +8,7 @@ return [
     'Updated By' => 'Bijgewerkt door',
     'Created At' => 'Aangemaakt op',
     'Updated At' => 'Bijgewerkt op',
+    'Deleted At' => 'Verwijderd op',
     'File Upload' => 'Bestand uploaden',
     'File Uploads' => 'Bestanden uploaden',
     'File Name' => 'Bestandsnaam',

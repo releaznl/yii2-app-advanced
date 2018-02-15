@@ -1,9 +1,11 @@
 <?php
 
 namespace common\components\db;
-use yii\behaviors\TimestampBehavior;
+
 use common\components\behavior\CreatedUpdatedBehavior;
 use common\models\User;
+use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 
 class ReleazActiveRecord extends \yii\db\ActiveRecord
@@ -33,7 +35,22 @@ class ReleazActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @inheritdoc
+     */
+    public function attributeLabels(): array
+    {
+        return array_merge(parent::attributeLabels(), [
+            'id' => Yii::t('common', 'ID'),
+            'created_by' => Yii::t('common', 'Created By'),
+            'updated_by' => Yii::t('common', 'Updated By'),
+            'created_at' => Yii::t('common', 'Created At'),
+            'updated_at' => Yii::t('common', 'Updated At'),
+            'deleted_at' => Yii::t('common', 'Deleted At'),
+        ]);
+    }
+
+    /**
+     * @return ActiveQuery
      */
     public function getUpdatedBy(): ActiveQuery
     {
@@ -41,7 +58,7 @@ class ReleazActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCreatedBy(): ActiveQuery
     {
