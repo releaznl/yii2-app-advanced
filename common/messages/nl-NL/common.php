@@ -34,6 +34,7 @@ return [
     'Upload file' => 'Bestand uploaden',
     'Upload different file' => 'Ander bestand uploaden',
     'Delete file' => 'Bestand verwijderen',
+    'delete_image' => 'Verwijder afbeelding',
     'File deleted' => 'Bestand verwijderd',
     'Uploading a new file will delete the old file' => 'Als u een nieuw bestand upload zal deze het oude bestand verwidjeren',
     'Are you sure you want to delete this item?' => 'Weet u zeker dat u dit item wilt verwijderen?',

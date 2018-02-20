@@ -46,8 +46,9 @@ return [
             'frontend/config/main-local.php',
         ],
         'createSymlink' => [
-          'frontend/web/backend' => 'backend/web',
-          'frontend/web/uploads' => 'shared/uploads'
+            'frontend/web/backend' => 'backend/web',
+            'frontend/web/uploads' => 'shared/uploads',
+            'backend/web/uploads' => 'shared/uploads',
         ]
     ],
     'Production' => [
@@ -66,8 +67,9 @@ return [
             'frontend/config/main-local.php',
         ],
         'createSymlink' => [
-          'frontend/web/backend' => 'backend/web',
-          'frontend/web/uploads' => '../../shared/uploads'
+            'frontend/web/backend' => 'backend/web',
+            'frontend/web/uploads' => '../../shared/uploads',
+            'backend/web/uploads' => '../../shared/uploads',
         ]
     ],
     'Acceptance' => [
@@ -86,8 +88,9 @@ return [
             'frontend/config/main-local.php',
         ],
         'createSymlink' => [
-          'frontend/web/backend' => 'backend/web',
-          'backend/web/uploads' => '../../shared/uploads',
+            'frontend/web/backend' => 'backend/web',
+            'backend/web/uploads' => '../../shared/uploads',
+            'frontend/web/uploads' => '../../shared/uploads',
         ]
     ],
 ];
